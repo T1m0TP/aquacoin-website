@@ -1,0 +1,370 @@
+:root {
+    --dark-color-2: hsl(245, 16%, 16%);
+    --dark-color-1: hsl(244, 17%, 19%);
+    --light-color-1: hsl(240, 100%, 99%);
+    --light-color-2: hsl(228, 50%, 96%);
+    --opacity: hsla(0, 0%, 100%, 0.5);
+    --gray: hsl(244, 17%, 61%);
+    --water: hsl(211, 89%, 56%);
+    --majorelle-blue: hsl(207, 94%, 51%);
+    --white: hsl(0, 0%, 100%);
+    --black: hsl(210, 11%, 15%);
+    --dark-blue: hsl(216, 48%, 25%);
+    --lavender-web: hsl(247, 69%, 95%);
+    
+    --ff-quicksand: "Quicksand", sans-serif;
+    --ff-mulish: "Mulish", sans-serif;
+
+    --fs-1: 36px;
+    --fs-2: 28px;
+    --fs-3: 20px;
+    --fs-4: 17px;
+    --fs-5: 16px;
+    --fs-6: 15px;
+    --fs-7: 14px;
+
+    --fw-500: 500;
+    --fw-600: 600;
+    --fw-700: 700;
+
+    --transition: 0.25s ease;
+
+    --section-padding: 80px;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li { list-style: none; }
+a { text-decoration: none; }
+
+a,
+img,
+span,
+input,
+label,
+button,
+ion-icon,
+textarea { display: block; }
+
+button {
+    border: none;
+    background: none;
+    font: inherit;
+    cursor: pointer;
+}
+
+input,
+textarea {
+    border: none;
+    font: inherit;
+    width: 100%;
+}
+
+html {
+    font-family: var(--ff-quicksand);
+    scroll-behavior: smooth;  
+}
+
+body { background: var(--white); }
+
+.container { padding-inline: 15px; }
+
+.h1,
+.h2,
+.h3 {
+  color: var(--dark-blue);
+  font-family: var(--ff-mulish);
+  line-height: 1.2;
+}
+
+.h1 { font-size: var(--fs-1); }
+
+.h2 { font-size: var(--fs-2); }
+
+.h3 { font-size: var(--fs-3); }
+
+.btn {
+  font-size: var(--fs-6);
+  font-weight: var(--fw-700);
+  padding: 15px 30px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.btn-primary:is(:hover, :focus) { transform: translateY(-2px); }
+
+.btn-primary {
+  background: var(--majorelle-blue);
+  color: var(--white);
+  width: 110px;
+}
+
+.btn-primary:is(:hover, :focus) {
+  --majorelle-blue: hsl(221, 100%, 60%);
+  box-shadow: 0 3px 10px hsla(245, 67%, 59%, 0.5);
+}
+
+.btn-outline {
+  border: 1px solid var(--majorelle-blue);
+  color: var(--majorelle-blue);
+}
+
+.btn-outline:is(:hover, :focus) {
+  background: var(--majorelle-blue);
+  color: var(--white);
+  box-shadow: 0 3px 10px hsl(220, 84%, 48%);
+}
+
+.btn-secondary {
+  background: hsla(245, 67%, 59%, 0.15);
+  color: var(--majorelle-blue);
+}
+
+.section-title { text-align: center; }
+
+.section-text {
+  color: var(--gray);
+  font-size: var(--fs-6);
+  line-height: 1.7;
+  text-align: center;
+}
+
+@keyframes apparition {
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--white);
+  padding-block: 20px;
+  box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.05);
+  height: 65px;
+  overflow: hidden;
+  transition: 0.5s ease-in-out;
+  z-index: 4;
+}
+
+.header.active { height: 330px; }
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-toggle-btn { 
+  font-size: 25px;
+}
+
+.navbar {
+  position: absolute;
+  width: 100%;
+  top: 64px;
+  left: 0;
+  padding-inline: 30px;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+  transform: translateY(-70px);
+  animation: apparition 0.4s 1.6s ease-out forwards;
+}
+
+.header.active .navbar {
+  visibility: visible;
+  opacity: 1;
+}
+
+.navbar-link,
+.header-action-link {
+  color: var(--gray);
+  font-size: var(--fs-6);
+  font-family: var(--ff-mulish);
+  padding-block: 8px;
+}
+
+:is(.navbar-link, .header-action-link):is(:hover, :focus) { color: var(--majorelle-blue); }
+
+.water {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.water .logo {
+  position: absolute;
+  bottom: 15px;
+  font-size: 2em;
+}
+
+.water .logo:nth-child(1) {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--lavender-web);
+}
+
+.water .logo:nth-child(2) {
+  color: hsl(194, 90%, 51%);
+  animation: animate 4s ease-in-out infinite;
+}
+
+@keyframes animate {
+  0%,
+  100% {
+    clip-path: polygon(
+      0% 45%,
+      15% 44%,
+      32% 50%,
+      54% 60%,
+      70% 61%,
+      84% 59%,
+      100% 52%,
+      100% 100%,
+      0% 100%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      0% 60%,
+      16% 65%,
+      34% 66%,
+      51% 62%,
+      67% 50%,
+      84% 45%,
+      100% 46%,
+      100% 100%,
+      0% 100%
+    );
+  }
+}
+
+
+#equipe {
+    padding-block: var(--section-padding);
+}
+
+#equipe h2 {
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: apparition 0.8s 0.2s ease-out forwards;
+  font-size: 50px;
+}
+
+.presentation {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.presentation .paragraphe {
+  transform: translateX(100%);
+  opacity: 0;
+  animation: apparition 0.8s 0.7s ease-out forwards;
+}
+
+.presentation p {
+  margin-top: 5px;
+  text-align:center;
+  width: 700px;
+}
+
+.presentation ion-icon {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  font-size: 40px;
+  color: var(--majorell-blue);
+  margin-inline: auto;
+  margin-bottom: 20px;
+  transition: var(--transition);
+}
+
+.presentation a {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.presentation a .contact {
+  background-color: var(--water);
+  color: var(--white);
+}
+.presentation a .contact:hover {
+  background-color: hsl(221, 100%, 60%);
+  box-shadow: 0 3px 10px hsla(245, 67%, 59%, 0.5);
+}
+
+footer p {
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+@media screen and (max-width: 900px) {
+  .presentation p {
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #equipe h2 {
+    font-size: var(--fs-1);
+  }
+
+  .presentation p {
+    width: 400px;
+  }
+}
+
+@media (min-width: 992px) {
+  .header {
+    overflow: visible;
+    padding-block: 0;
+    height: unset;
+  }
+
+  .header.active { height: unset; }
+
+  .menu-toggle-btn { display: none; }
+
+  .navbar {
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 0;
+  }
+
+  .navbar-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    gap: 40px;
+    margin-inline: auto;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .navbar-link,
+  .header-action-link { padding-block: 25px; }
+}
